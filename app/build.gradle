@@ -1,0 +1,102 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+
+repositories {
+    flatDir {
+        dir 'libs'
+    }
+}
+
+android {
+    signingConfigs {
+        release {
+            keyAlias 'sb'
+            keyPassword '123456'
+            storeFile file('C:/Users/杨帆/Desktop/shuibiao.jks')
+            storePassword '123456'
+        }
+    }
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.jiayuan.shuibiao"
+        minSdkVersion 19
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true
+            }
+        }
+
+        ndk {
+            abiFilters "armeabi"
+        }
+
+        packagingOptions {
+            exclude "lib/libgnustl_shared.so"
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDir 'libs'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            signingConfig signingConfigs.release
+        }
+    }
+    greendao {
+        schemaVersion 1//<--数据库的版本，用于升级时候进行更改
+        daoPackage 'com.jiayuan.shuibiao.gen'//这个是生成DAOs、DaoMaster、DaoSession代码保存的包名,默认为entities所在包名
+        targetGenDir 'src/main/java'
+//生成DAOs、DaoMaster、DaoSession的目录。默认为build/generated/source/greendao
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation(name: 'NaviTts', ext: 'aar')
+    implementation(name: 'onsdk_all', ext: 'aar')
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'com.android.support:design:27.1.1'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'com.blankj:utilcode:1.23.7'
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.google.code.gson:gson:2.2.4'
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'org.greenrobot:greendao:3.2.2'
+    implementation 'org.greenrobot:eventbus:3.0.0'
+    implementation 'com.android.support:multidex:1.0.1'
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    implementation 'com.yinglan.scrolllayout:scrolllayout:1.0.2'
+    implementation 'com.github.nuptboyzhb.lib.uikit:superswiperefreshlayout:1.0.0'
+    //沉浸式状态栏
+    implementation 'com.jaeger.statusbarutil:library:1.5.1'
+    //客服
+    implementation 'com.jude:easyrecyclerview:4.2.3'
+    implementation 'com.github.bumptech.glide:glide:4.5.0'
+    //拍照
+    implementation 'com.github.HuanTanSheng:EasyPhotos:2.3.4'
+    //图片压缩
+    implementation 'com.github.nanchen2251:CompressHelper:1.0.5'
+    implementation project(path: ':focussurfaceview')
+    implementation project(path: ':charts')
+    //    implementation 'org.xclcharts:lib:2.4'
+    implementation 'com.github.ybq:Android-SpinKit:1.2.0'
+}

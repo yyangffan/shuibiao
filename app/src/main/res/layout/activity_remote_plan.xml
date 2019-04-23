@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+
+    <!--<LinearLayout-->
+        <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="61dp"-->
+        <!--android:layout_marginBottom="5dip"-->
+        <!--android:layout_marginTop="5dip"-->
+        <!--android:orientation="horizontal" android:weightSum="1">-->
+
+
+
+    <!--</LinearLayout>-->
+
+
+
+    <LinearLayout
+        android:id="@+id/title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/common_blue"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="50dp"
+            android:gravity="left|center"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/back"
+                />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/drive"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginLeft="2dip"
+            android:layout_marginRight="2dip"
+            android:textColor="@color/white"
+            android:text="驾车" />
+
+        <TextView
+            android:id="@+id/bike"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginLeft="2dip"
+            android:layout_marginRight="2dip"
+            android:textColor="@color/white"
+            android:text="骑行"/>
+
+        <TextView
+            android:id="@+id/walk"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginLeft="2dip"
+            android:layout_marginRight="2dip"
+            android:textColor="@color/white"
+            android:text="步行"/>
+
+
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <com.baidu.mapapi.map.MapView
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true" />
+
+        <LinearLayout
+            android:id="@+id/navButton"
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:gravity="center">
+            <TextView
+                android:background="@drawable/bg_confirm_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:text="开始导航"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>
